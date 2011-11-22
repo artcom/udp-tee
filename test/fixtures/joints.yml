@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  interface: MyString
+  port: 1
+  open: false
+
+two:
+  interface: MyString
+  port: 1
+  open: false

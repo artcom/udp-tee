@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nick:</b>
+  <%= @input.nick %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%= @input.ip %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @input.port %>
+</p>
+
+<p>
+  <b>Fan out:</b>
+  <%= @input.fan_out_id %>
+</p>
+
+<p>
+  <b>Open:</b>
+  <%= @input.open %>
+</p>
+
+
+<%= link_to 'Edit', edit_input_path(@input) %> |
+<%= link_to 'Back', inputs_path %>

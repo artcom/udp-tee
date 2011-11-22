@@ -1,0 +1,2 @@
+module FanOutsHelper
+end

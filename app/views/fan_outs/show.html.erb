@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nick:</b>
+  <%= @fan_out.nick %>
+</p>
+
+<p>
+  <b>Input:</b>
+  <%= @fan_out.input_id %>
+</p>
+
+<p>
+  <b>Open:</b>
+  <%= @fan_out.open %>
+</p>
+
+
+<%= link_to 'Edit', edit_fan_out_path(@fan_out) %> |
+<%= link_to 'Back', fan_outs_path %>

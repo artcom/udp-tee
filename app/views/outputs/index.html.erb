@@ -1,0 +1,31 @@
+<h1>Listing outputs</h1>
+
+<table>
+  <tr>
+    <th>Nick</th>
+    <th>Ip</th>
+    <th>Port</th>
+    <th>Fan out</th>
+    <th>Open</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @outputs.each do |output| %>
+  <tr>
+    <td><%= output.nick %></td>
+    <td><%= output.ip %></td>
+    <td><%= output.port %></td>
+    <td><%= output.fan_out_id %></td>
+    <td><%= output.open %></td>
+    <td><%= link_to 'Show', output %></td>
+    <td><%= link_to 'Edit', edit_output_path(output) %></td>
+    <td><%= link_to 'Destroy', output, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Output', new_output_path %>

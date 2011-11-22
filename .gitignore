@@ -1,0 +1,10 @@
+*.swo
+*.swp
+.bundle
+.sass-cache/
+Gemfile.lock
+README.html
+config/database.yml
+db/*.sqlite3
+log/*.log
+tmp/

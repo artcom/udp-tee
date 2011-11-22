@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Interface:</b>
+  <%= @joint.interface %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @joint.port %>
+</p>
+
+<p>
+  <b>Open:</b>
+  <%= @joint.open %>
+</p>
+
+
+<%= link_to 'Edit', edit_joint_path(@joint) %> |
+<%= link_to 'Back', joints_path %>

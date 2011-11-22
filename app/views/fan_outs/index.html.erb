@@ -1,0 +1,27 @@
+<h1>Listing fan_outs</h1>
+
+<table>
+  <tr>
+    <th>Nick</th>
+    <th>Input</th>
+    <th>Open</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fan_outs.each do |fan_out| %>
+  <tr>
+    <td><%= fan_out.nick %></td>
+    <td><%= fan_out.input_id %></td>
+    <td><%= fan_out.open %></td>
+    <td><%= link_to 'Show', fan_out %></td>
+    <td><%= link_to 'Edit', edit_fan_out_path(fan_out) %></td>
+    <td><%= link_to 'Destroy', fan_out, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fan out', new_fan_out_path %>
