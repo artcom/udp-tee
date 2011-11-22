@@ -30,11 +30,15 @@ class UdpTee::Daemon
     end
   end
 
+  # as long there is no GUI for creating fan-out settings we create a fan-out
+  # instance on the fly from the first input found to all existing outputs.
+  #
   def create_fan_out_from_inputs_and_outputs
-    fan_out = FanOut.new # TODO only one fan-out currently...
-    fan_out.input = Input.first
-    fan_out.outputs = Output.all
-    fan_out.save!
-    fan_out.activate
+    fan_out = FanOut.first
+    fan_out ||= FanOut.create(
+      input: Input.first,
+      outputs: Output.all,
+    ).activate
+    #fan_out.activate
   end
 end
