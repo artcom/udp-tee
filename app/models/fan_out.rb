@@ -8,7 +8,7 @@ class FanOut < ActiveRecord::Base
     puts "activating input: #{input}"
     input or return
     input.on_fire do |data| 
-      puts "(#{data.size}) bytes to #{output.size} outputs"
+      puts "(#{data.size}) bytes to #{outputs.size} outputs"
       outputs.each {|output| output.push(data)}
     end
     self
