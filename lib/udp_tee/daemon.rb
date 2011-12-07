@@ -20,11 +20,15 @@ class UdpTee::Daemon
     #
     #   {:action=>"env", :env=>"production", :pidfile=>"xxx", :args=>[]}
     #
-    @options = Defaults.merge(Hash.from_argv(ENV['UDP_TEE_ARGS'].split ' '))
+    @options = Defaults.merge(env_args)
 
     if @options[:pidfile]
       File.open(@options[:pidfile], "w") {|f| f.write Process.pid}
     end
+  end
+
+  def env_args 
+    @env_args ||= Hash.from_argv((ENV['UDP_TEE_ARGS'] || '').split ' ')
   end
 
   # starting up the the eventmachine server loop which basically runs forever

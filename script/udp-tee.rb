@@ -5,7 +5,7 @@ require 'applix'
 
 Defaults = {
   env:    :production,
-  action: :env,
+  action: :start,
 }
 
 def usage 
@@ -30,7 +30,7 @@ Applix.main(ARGV, Defaults) do
     #puts "options: #{opts}"
     script = File.expand_path('../../script/rails', __FILE__)
     ENV['UDP_TEE_ARGS'] = opts.map{|h| "--%s=%s" % h}.sort * ' '
-    cmd = "#{script} runner -e=#{opts[:env]} UdpTee::Daemon.#{opts[:action]}"
+    cmd = "#{script} runner -e #{opts[:env]} UdpTee::Daemon.#{opts[:action]}"
 
     if opts[:logfile]
       cmd = "#{cmd} > #{opts[:logfile]} 2>&1"
