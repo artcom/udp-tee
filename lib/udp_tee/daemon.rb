@@ -1,6 +1,31 @@
 class UdpTee::Daemon
 
-  attr_reader :inputs 
+  Defaults = {
+    # reserved for future use..
+  }
+
+  def self.env
+    puts ENV.map{|h|h * ' --> '}.sort * "\n"
+    puts "options: #{new.options}"
+  end
+
+  attr_reader :inputs, :options
+
+  def initialize
+    # this is pulling options from the evnironment. Expected format:
+    #
+    #   UDP_TEE_ARGS="--action=env --env=production --pidfile=xxx"
+    #
+    # into:
+    #
+    #   {:action=>"env", :env=>"production", :pidfile=>"xxx", :args=>[]}
+    #
+    @options = Defaults.merge(Hash.from_argv(ENV['UDP_TEE_ARGS'].split ' '))
+
+    if @options[:pidfile]
+      File.open(@options[:pidfile], "w") {|f| f.write Process.pid}
+    end
+  end
 
   # starting up the the eventmachine server loop which basically runs forever
   def self.start; new.forever; end
