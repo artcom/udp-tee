@@ -33,7 +33,7 @@ Applix.main(ARGV, Defaults) do
     cmd = "#{script} runner -e #{opts[:env]} UdpTee::Daemon.#{opts[:action]}"
 
     if opts[:logfile]
-      cmd = "#{cmd} > #{opts[:logfile]} 2>&1"
+      cmd = "#{cmd} >> #{opts[:logfile]} 2>&1"
     end
 
     if opts[:background]
