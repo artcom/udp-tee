@@ -1,10 +1,6 @@
 UdpTee::Application.routes.draw do
   resources :fan_outs
-
   resources :outputs
-
-  resources :joints
-
   resources :inputs
 
   # The priority is based upon order of creation:

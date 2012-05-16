@@ -19,7 +19,7 @@ end
 
 # examples usage: 
 #
-#   ./script/udp-tee.rb --pidfile=pid --logfile=t --background
+#   $ udp-tee --pidfile=pid --logfile=t --background
 #
 Applix.main(ARGV, Defaults) do
 
