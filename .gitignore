@@ -1,11 +1,14 @@
-*.swo
-*.swp
-.bundle
-.sass-cache/
+# generated, not to be checked in
 Gemfile.lock
-README.html
-config/database.yml
-db/*.sqlite3
-log/*.log
-log/*.pid
-tmp/
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database & and user configs
+/db/*.sqlite3
+/config/database.yml
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/log/*.pid
+/tmp
