@@ -1,31 +1,42 @@
-<h1>Listing inputs</h1>
-
-<table>
-  <tr>
-    <th>Nick</th>
-    <th>Ip</th>
-    <th>Port</th>
-    <th>Fan out</th>
-    <th>Open</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @inputs.each do |input| %>
-  <tr>
-    <td><%= input.nick %></td>
-    <td><%= input.ip %></td>
-    <td><%= input.port %></td>
-    <td><%= input.fan_out_id %></td>
-    <td><%= input.open %></td>
-    <td><%= link_to 'Show', input %></td>
-    <td><%= link_to 'Edit', edit_input_path(input) %></td>
-    <td><%= link_to 'Destroy', input, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<%- model_class = Input.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nick) %></th>
+      <th><%= model_class.human_attribute_name(:fan_out_id) %></th>
+      <th><%= model_class.human_attribute_name(:ip) %></th>
+      <th><%= model_class.human_attribute_name(:port) %></th>
+      <th><%= model_class.human_attribute_name(:open) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inputs.each do |input| %>
+      <tr>
+        <td><%= link_to input.id, input_path(input) %></td>
+        <td><%= input.nick %></td>
+        <td><%= input.fan_out_id %></td>
+        <td><%= input.ip %></td>
+        <td><%= input.port %></td>
+        <td><%= input.open %></td>
+        <td><%=l input.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_input_path(input), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      input_path(input),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Input', new_input_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_input_path,
+            :class => 'btn btn-primary' %>

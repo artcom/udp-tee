@@ -3,6 +3,8 @@ UdpTee::Application.routes.draw do
   resources :outputs
   resources :inputs
 
+  root :to => 'fan_outs#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

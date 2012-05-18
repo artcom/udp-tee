@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @fan_out.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
-<p>
-  <b>Nick:</b>
-  <%= @fan_out.nick %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nick) %>:</strong></dt>
+  <dd><%= @fan_out.nick %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:input_id) %>:</strong></dt>
+  <dd><%= @fan_out.input_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:open) %>:</strong></dt>
+  <dd><%= @fan_out.open %></dd>
+</dl>
 
-<p>
-  <b>Input:</b>
-  <%= @fan_out.input_id %>
-</p>
-
-<p>
-  <b>Open:</b>
-  <%= @fan_out.open %>
-</p>
-
-
-<%= link_to 'Edit', edit_fan_out_path(@fan_out) %> |
-<%= link_to 'Back', fan_outs_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              fan_outs_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_fan_out_path(@fan_out), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              fan_out_path(@fan_out),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
