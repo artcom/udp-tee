@@ -8,6 +8,9 @@ Gemfile.lock
 /db/*.sqlite3
 /config/database.yml
 
+## PROJECT::SPECIFIC
+notes.mkd
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /log/*.pid
