@@ -50,5 +50,17 @@ group :development, :test do
     gem 'wirble'
     gem 'pry'
 
+    gem 'rspec'
+    gem 'rspec-mocks'
+    gem 'guard'
+    gem 'guard-rspec'
+    gem 'guard-test'
+    gem 'growl'
+    gem 'ruby-prof'
+    gem 'rspec-rails', "~> 2.6"
+    #gem 'rb-inotify', :require => false
+    #gem 'rb-fsevent', :require => false
+    #gem 'rb-fchange', :require => false
+
     gem 'debugger'
 end
