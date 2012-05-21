@@ -1,4 +1,5 @@
 UdpTee::Application.routes.draw do
+  resources :udp_sockets
   resources :fan_outs
   resources :outputs
   resources :inputs
