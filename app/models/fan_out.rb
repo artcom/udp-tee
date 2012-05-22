@@ -1,6 +1,6 @@
 class FanOut < ActiveRecord::Base
-  has_one :input
-  has_many :outputs
+  has_one :input, :class_name => SocketConnector
+  #has_many :outputs, :class_name => SocketConnector
 
   after_find  :activate
 

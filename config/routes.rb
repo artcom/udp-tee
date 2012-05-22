@@ -1,9 +1,6 @@
 UdpTee::Application.routes.draw do
   resources :socket_connectors
-  resources :fan_outs
-  resources :outputs
-  resources :inputs
-
+  resources :fan_outs  
   root :to => 'fan_outs#index'
 
   # The priority is based upon order of creation:
