@@ -1,5 +1,6 @@
 class SocketConnector < ActiveRecord::Base
   attr_accessible :ip, :nick, :port
+  has_and_belongs_to_many :fan_outs
 
   # note: would called this method #send but that kind of reserved in
   # ruby/rails

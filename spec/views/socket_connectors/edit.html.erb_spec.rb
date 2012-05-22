@@ -4,8 +4,8 @@ describe "socket_connectors/edit" do
   before(:each) do
     @socket_connector = assign(:socket_connector, stub_model(SocketConnector,
       :nick => "MyString",
-      :ip => "MyString",
-      :port => "9.99"
+      :ip => "0.0.0.0",
+      :port => "9099"
     ))
   end
 

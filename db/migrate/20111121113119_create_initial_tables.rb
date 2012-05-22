@@ -7,27 +7,5 @@ class CreateInitialTables < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    create_table :inputs do |t|
-      t.string  :nick
-      t.integer :fan_out_id
-
-      t.string  :ip
-      t.integer :port
-      t.boolean :open
-
-      t.timestamps
-    end
-
-    create_table :outputs do |t|
-      t.string  :nick
-      t.integer :fan_out_id
-
-      t.string  :ip
-      t.integer :port
-      t.boolean :open
-
-      t.timestamps
-    end
   end
 end

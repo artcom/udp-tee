@@ -8,7 +8,17 @@
   <div class="control-group">
     <%= f.label :input_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :input_id, :class => 'number_field' %>
+      <%= f.collection_select :input_id, 
+        SocketConnector.order(:nick), :id, :nick, {}, {multiple: false}
+      %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :output_ids, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :output_ids, 
+        SocketConnector.order(:nick), :id, :nick, {}, {multiple: true}
+      %>
     </div>
   </div>
   <div class="control-group">

@@ -7,5 +7,10 @@ class CreateSocketConnectors < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_table :fan_outs_socket_connectors, :id => false do |t|
+      t.integer :fan_out_id
+      t.integer :socket_connector_id
+    end
   end
 end

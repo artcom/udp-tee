@@ -17,28 +17,13 @@ ActiveRecord::Schema.define(:version => 20120521154504) do
     t.string   "nick"
     t.integer  "input_id"
     t.boolean  "open"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "inputs", :force => true do |t|
-    t.string   "nick"
-    t.integer  "fan_out_id"
-    t.string   "ip"
-    t.integer  "port"
-    t.boolean  "open"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "outputs", :force => true do |t|
-    t.string   "nick"
-    t.integer  "fan_out_id"
-    t.string   "ip"
-    t.integer  "port"
-    t.boolean  "open"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "fan_outs_socket_connectors", :id => false, :force => true do |t|
+    t.integer "fan_out_id"
+    t.integer "socket_connector_id"
   end
 
   create_table "socket_connectors", :force => true do |t|

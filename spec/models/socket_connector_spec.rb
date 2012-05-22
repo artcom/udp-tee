@@ -3,6 +3,11 @@ require 'spec_helper'
 describe SocketConnector do
   context 'with empty port' do
     let(:port) { SocketConnector.new }
+
+    it 'supports the habtm assoc' do
+      port.fan_outs.should eq([])
+    end
+
     it 'should not crash on_push' do
       expect { port.push 'abx' }.should_not raise_error
     end
