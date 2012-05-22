@@ -1,6 +1,6 @@
-class CreateUdpSockets < ActiveRecord::Migration
+class CreateSocketConnectors < ActiveRecord::Migration
   def change
-    create_table :udp_sockets do |t|
+    create_table :socket_connectors do |t|
       t.string :nick
       t.string :ip
       t.integer :port, :null => false

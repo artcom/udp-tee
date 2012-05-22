@@ -1,4 +1,4 @@
-<%- model_class = UdpSocket.new.class -%>
+<%- model_class = SocketConnector.new.class -%>
 <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 <table class="table table-striped">
   <thead>
@@ -12,18 +12,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @udp_sockets.each do |udp_socket| %>
+    <% @socket_connectors.each do |socket_connector| %>
       <tr>
-        <td><%= link_to udp_socket.id, udp_socket_path(udp_socket) %></td>
-        <td><%= udp_socket.nick %></td>
-        <td><%= udp_socket.ip %></td>
-        <td><%= udp_socket.port %></td>
-        <!--td><%=l udp_socket.created_at %></td-->
+        <td><%= link_to socket_connector.id, socket_connector_path(socket_connector) %></td>
+        <td><%= socket_connector.nick %></td>
+        <td><%= socket_connector.ip %></td>
+        <td><%= socket_connector.port %></td>
+        <!--td><%=l socket_connector.created_at %></td-->
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_udp_socket_path(udp_socket), :class => 'btn btn-mini' %>
+                      edit_socket_connector_path(socket_connector), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      udp_socket_path(udp_socket),
+                      socket_connector_path(socket_connector),
                       :method => :delete,
                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
                       :class => 'btn btn-mini btn-danger' %>
@@ -34,5 +34,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_udp_socket_path,
+            new_socket_connector_path,
             :class => 'btn btn-primary' %>

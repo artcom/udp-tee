@@ -1,4 +1,4 @@
-<%= form_for @udp_socket, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @socket_connector, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :nick, :class => 'control-label' %>
     <div class="controls">
@@ -21,6 +21,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                udp_sockets_path, :class => 'btn' %>
+                socket_connectors_path, :class => 'btn' %>
   </div>
 <% end %>

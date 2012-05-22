@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "udp_sockets/show" do
+describe "socket_connectors/show" do
   before(:each) do
-    @udp_socket = assign(:udp_socket, stub_model(UdpSocket,
+    @socket_connector = assign(:socket_connector, stub_model(SocketConnector,
       :nick => "Nick",
       :ip => "IP",
       :port => 9999,

@@ -1,4 +1,4 @@
-class UdpSocket < ActiveRecord::Base
+class SocketConnector < ActiveRecord::Base
   attr_accessible :ip, :nick, :port
 
   # note: would called this method #send but that kind of reserved in

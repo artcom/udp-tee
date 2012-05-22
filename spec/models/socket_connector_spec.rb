@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe UdpSocket do
+describe SocketConnector do
   context 'with empty port' do
-    let(:port) { UdpSocket.new }
+    let(:port) { SocketConnector.new }
     it 'should not crash on_push' do
       expect { port.push 'abx' }.should_not raise_error
     end

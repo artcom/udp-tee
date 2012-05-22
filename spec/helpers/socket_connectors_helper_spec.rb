@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 # Specs in this file have access to a helper object that includes
-# the UdpSocketsHelper. For example:
+# the SocketConnectorsHelper. For example:
 #
-# describe UdpSocketsHelper do
+# describe SocketConnectorsHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       helper.concat_strings("this","that").should == "this that"
 #     end
 #   end
 # end
-describe UdpSocketsHelper do
+describe SocketConnectorsHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
