@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521154504) do
+ActiveRecord::Schema.define(:version => 20120523110933) do
 
   create_table "fan_outs", :force => true do |t|
     t.string   "nick"
     t.integer  "input_id"
-    t.boolean  "open"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "open",       :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "fan_outs_socket_connectors", :id => false, :force => true do |t|

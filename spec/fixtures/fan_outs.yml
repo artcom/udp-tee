@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  nick: fo-1
+  nick: MyString
   input_id: 1
   open: false
 
 two:
-  nick: fo-2
+  nick: MyString
   input_id: 1
   open: false

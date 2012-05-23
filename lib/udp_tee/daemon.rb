@@ -31,10 +31,10 @@ class UdpTee::Daemon
     @env_args ||= Hash.from_argv((ENV['UDP_TEE_ARGS'] || '').split ' ')
   end
 
-  # starting up the the eventmachine server loop which basically runs forever
+  # alias to #forever
   def self.start; new.forever; end
 
-  # endless server loop
+  # starting up the the eventmachine server loop which basically runs forever
   def forever 
     fo = create_fan_out_from_inputs_and_outputs
     EM.run do
