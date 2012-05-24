@@ -2,10 +2,12 @@
 
 one:
   nick: MyString
-  input_id: 1
+  input: in1
+  outputs: out1
   open: false
 
 two:
   nick: MyString
+  outputs: two
   input_id: 1
   open: false

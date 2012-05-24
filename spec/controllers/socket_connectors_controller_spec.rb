@@ -40,7 +40,7 @@ describe SocketConnectorsController do
     it "assigns all socket_connectors as @socket_connectors" do
       socket_connector = SocketConnector.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:socket_connectors).should eq([socket_connector])
+      assigns(:socket_connectors).should include(socket_connector)
     end
   end
 

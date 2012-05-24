@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+in1:
+  nick: in
+  ip: 0.0.0.1
+  port: 1001
+out1:
+  nick: out
+  ip: 0.0.0.2
+  port: 1002
