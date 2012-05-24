@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'applix'
+
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'udp_tee'
+
+Defaults = {
+  fan:  nil, # just take the first fan-out we can find
+  env:  :production,
+}
+
+class App
+  def initialize config = {}
+    @config = config
+  end
+
+  def load_rails_env
+    # http://zerowidth.com/2011/03/18/standalone-script-runner-bin-scripts-in-rails.html
+    require File.expand_path('../../config/boot',  __FILE__)
+    require File.expand_path('../../config/application',  __FILE__)
+    Rails.env = @config[:env].to_s
+    Rails.application.require_environment!
+  end
+
+  def run
+    UdpTee::Em.start(fan_out, @config)
+  end
+
+  private
+  def fan_out
+    @fan_put ||= (
+      if nick = @config[:nick]
+        FanOut.find_by_nick(nick)
+      else
+        FanOut.first
+      end
+    )
+  end
+end
+
+Applix.main(ARGV, Defaults) do
+
+  def usage 
+    puts <<-EOT
+
+    #{__FILE__} [--pidfile=pid] [--logfile=t] [--background]
+
+    EOT
+    exit 0
+  end
+
+  prolog do |_, config|
+    usage if (config[:help] or config[:h])
+    @app = App.new(config)
+    @app.load_rails_env
+  end
+
+  any do |*args, config|
+    puts "args, config: #{args}, #{config}"
+    @app.send(args.shift, *args)
+  end
+end
+
+__END__
+
+  def push scopes, messages
+    puts " -- to scopes(#{messages.size}): #{scopes.join ', '}"
+    scopes.each do |scope|
+      messages.each do |message| 
+        #puts ">>>>#{message}"
+        send_datagram message, scope.ip, scope.port 
+      end
+    end
+  end
