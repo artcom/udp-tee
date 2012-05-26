@@ -2,6 +2,12 @@ class SocketConnector < ActiveRecord::Base
   attr_accessible :ip, :nick, :port
   has_and_belongs_to_many :fan_outs
 
+  def to_s
+    (ip.blank? ? '0.0.0.0' : ip) + ':' +
+    (port.nil? ? '???' : port.to_s) +
+    (nick.blank? ? '' : " (#{nick})")
+  end
+
   # note: would called this method #send but that kind of reserved in
   # ruby/rails
   def push message

@@ -9,7 +9,7 @@
     <%= f.label :input_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.collection_select :input_id, 
-        SocketConnector.order(:nick), :id, :nick, {}, {multiple: false}
+        SocketConnector.order(:nick), :id, :to_s, {}, {multiple: false}
       %>
     </div>
   </div>
@@ -17,7 +17,7 @@
     <%= f.label :output_ids, 'Outputs', :class => 'control-label' %>
     <div class="controls">
       <%= f.collection_select( :output_ids, 
-        SocketConnector.order(:nick), :id, :nick, {}, {multiple: true}
+        SocketConnector.order(:nick), :id, :to_s, {}, {multiple: true}
       )%>
     </div>
   </div>

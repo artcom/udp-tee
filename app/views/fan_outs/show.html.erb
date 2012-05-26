@@ -5,7 +5,9 @@
   <dt><strong><%= model_class.human_attribute_name(:nick) %>:</strong></dt>
   <dd><%= @fan_out.nick %></dd>
   <dt><strong><%= model_class.human_attribute_name(:input_id) %>:</strong></dt>
-  <dd><%= @fan_out.input_id %></dd>
+  <dd><%= @fan_out.input %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:output_ids) %>:</strong></dt>
+  <dd><%= @fan_out.outputs.join ', ' %></dd>
   <dt><strong><%= model_class.human_attribute_name(:open) %>:</strong></dt>
   <dd><%= @fan_out.open %></dd>
 </dl>

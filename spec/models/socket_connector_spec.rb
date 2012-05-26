@@ -1,6 +1,23 @@
 require 'spec_helper'
 
 describe SocketConnector do
+
+  context 'various to_s variations' do
+    it 'has a decent default on empty instances' do
+      SocketConnector.new.to_s.should eq('0.0.0.0:???')
+    end
+
+    it 'has a decent formatting' do
+      so = SocketConnector.new(ip: '1.2.3.4', port: 1234, nick: 'foo')
+      so.to_s.should eq('1.2.3.4:1234 (foo)')
+    end
+
+    it 'drops nil nicks from to_s rep' do
+      so = SocketConnector.new(ip: '1.2.3.4', port: 1234)
+      so.to_s.should eq('1.2.3.4:1234')
+    end
+  end
+
   context 'with empty SocketConnector' do
     let(:so) { SocketConnector.new }
 
