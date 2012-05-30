@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
+
+# before anything else relocate us to the base dir of this application
+base_dir = File.realdirpath(File.join(File.dirname(__FILE__), '..'))
+require 'fileutils'
+FileUtils.cd(base_dir)
+
 require 'bundler/setup'
 require 'applix'
 require 'daemons'
-
-APP_PATH = File.join(File.dirname(__FILE__), 'udp-tee')
 
 Defaults = {
   ARGV: [],
@@ -21,6 +25,6 @@ Applix.main(ARGV, Defaults) do
 
   any do |*args, opts|
     opts[:ARGV] = args
-    Daemons.run(APP_PATH, opts)
+    Daemons.run('bin/udp-tee', opts)
   end
 end

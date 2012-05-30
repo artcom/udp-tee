@@ -1,10 +1,17 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
+
+# before anything else relocate us to the base dir of this application
+base_dir = File.realdirpath(File.join(File.dirname(__FILE__), '..'))
+require 'fileutils'
+FileUtils.cd(base_dir)
+
 require 'bundler/setup'
 require 'applix'
 
-$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+#$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+$:.unshift 'lib'
 require 'udp_tee'
 
 Defaults = {
@@ -19,8 +26,11 @@ class App
 
   def load_rails_env
     # http://zerowidth.com/2011/03/18/standalone-script-runner-bin-scripts-in-rails.html
-    require File.expand_path('../../config/boot',  __FILE__)
-    require File.expand_path('../../config/application',  __FILE__)
+    #require File.expand_path('../../config/boot',  __FILE__)
+    #require File.expand_path('../../config/application',  __FILE__)
+    $:.unshift '.'
+    require 'config/boot'
+    require 'config/application'
     Rails.env = @config[:env].to_s
     print " -- loading rails env(#{Rails.env}) .. "
     Rails.application.require_environment!
@@ -47,17 +57,17 @@ class App
   end
 end
 
-Applix.main(ARGV, Defaults) do
+Applix.main!(ARGV, Defaults) do
 
-  def usage 
+  def usage
     puts <<-EOT
 
-#{__FILE__} <options> <command> 
+#{__FILE__} <options> <command>
 
-commands are: 
+commands are:
 
-  run: 
-  
+  run:
+
  info:
 
     EOT
