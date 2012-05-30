@@ -26,7 +26,8 @@ end
 
 gem 'jquery-rails'
 gem 'therubyracer'
-gem 'applix'
+gem 'applix', '~> 0.4.10'
+gem 'daemon'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

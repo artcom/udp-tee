@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'applix'
+require 'daemons'
+
+APP_PATH = File.join(File.dirname(__FILE__), 'udp-tee')
+
+Defaults = {
+  ARGV: [],
+  log_output: true,
+  dir_mode: :normal,
+  backtrace: true,
+}
+
+Applix.main(ARGV, Defaults) do
+  prolog do |args, opts|
+    puts "args, options: #{args}, #{opts}"
+  end
+
+  any do |*args, opts|
+    opts[:ARGV] = args
+    Daemons.run(APP_PATH, opts)
+  end
+end

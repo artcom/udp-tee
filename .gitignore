@@ -14,5 +14,6 @@ notes.mkd
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.output
 /log/*.pid
 /tmp
